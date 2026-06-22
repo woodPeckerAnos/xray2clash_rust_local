@@ -1,4 +1,6 @@
-# vless-clash-dev
+# **[xray2clash_rust_local](https://github.com/woodPeckerAnos/xray2clash_rust_local)**
+
+
 
 将 xray 安装脚本生成的 **VLESS + REALITY** 分享链接（`vless://`）转换为 [Clash Verge Dev](https://github.com/clash-verge-rev/clash-verge-rev) 可直接导入的 Mihomo YAML 配置。
 
@@ -93,20 +95,22 @@ vless-clash-dev --input "vless://..." --stdout --mode rule
 
 ## CLI 参数
 
-| 参数 | 说明 |
-|------|------|
-| `--input` | 单条 `vless://` 链接 |
-| `--input-file` | 文本文件，每行一条链接（`#` 开头为注释） |
-| `--output` | 输出 YAML 文件路径（仅单条输入） |
-| `--output-dir` | 输出目录（默认 `./outputs`） |
-| `--stdout` | 写入标准输出 |
-| `--mode global\|rule\|whitelist\|both` | 生成全局、分流、白名单或全部三种配置（默认 `rule`） |
-| `--preset <name>` | 白名单 preset 名称，可重复指定 |
-| `--preset-all` | 使用全部内置 preset |
-| `--custom-preset <file>` | 额外加载自定义 preset YAML，可重复指定 |
-| `--list-presets` | 列出内置与用户 preset |
-| `--name`, `--rename` | 重命名 Clash 中的代理节点 |
-| `--output-name` | 重命名输出文件名（不含扩展名，配合 `--output-dir`） |
+
+| 参数                                  | 说明                                |
+| ----------------------------------- | --------------------------------- |
+| `--input`                           | 单条 `vless://` 链接                  |
+| `--input-file`                      | 文本文件，每行一条链接（`#` 开头为注释）            |
+| `--output`                          | 输出 YAML 文件路径（仅单条输入）               |
+| `--output-dir`                      | 输出目录（默认 `./outputs`）              |
+| `--stdout`                          | 写入标准输出                            |
+| `--mode global|rule|whitelist|both` | 生成全局、分流、白名单或全部三种配置（默认 `rule`）     |
+| `--preset <name>`                   | 白名单 preset 名称，可重复指定               |
+| `--preset-all`                      | 使用全部内置 preset                     |
+| `--custom-preset <file>`            | 额外加载自定义 preset YAML，可重复指定         |
+| `--list-presets`                    | 列出内置与用户 preset                    |
+| `--name`, `--rename`                | 重命名 Clash 中的代理节点                  |
+| `--output-name`                     | 重命名输出文件名（不含扩展名，配合 `--output-dir`） |
+
 
 ## 分享链接格式
 
@@ -114,17 +118,19 @@ vless-clash-dev --input "vless://..." --stdout --mode rule
 vless://UUID@server:443?type=tcp&security=reality&sni=www.example.com&fp=chrome&pbk=PUBLIC_KEY&sid=SHORT_ID&flow=xtls-rprx-vision#NodeName
 ```
 
-| 参数 | 说明 |
-|------|------|
-| `UUID` | 用户 ID |
-| `server:port` | 服务器地址与端口 |
-| `security` | 必须为 `reality` |
-| `sni` | REALITY 伪装域名 |
-| `pbk` | 服务端公钥 |
-| `fp` | 浏览器指纹（默认 `chrome`） |
-| `sid` | Short ID（可选） |
-| `flow` | 流控，如 `xtls-rprx-vision`（可选） |
-| `#NodeName` | 节点名称（URL 编码） |
+
+| 参数            | 说明                          |
+| ------------- | --------------------------- |
+| `UUID`        | 用户 ID                       |
+| `server:port` | 服务器地址与端口                    |
+| `security`    | 必须为 `reality`               |
+| `sni`         | REALITY 伪装域名                |
+| `pbk`         | 服务端公钥                       |
+| `fp`          | 浏览器指纹（默认 `chrome`）          |
+| `sid`         | Short ID（可选）                |
+| `flow`        | 流控，如 `xtls-rprx-vision`（可选） |
+| `#NodeName`   | 节点名称（URL 编码）                |
+
 
 ## Clash Verge Dev 导入步骤
 
@@ -151,20 +157,22 @@ vless://UUID@server:443?type=tcp&security=reality&sni=www.example.com&fp=chrome&
 - 所选 preset 中的域名（`DOMAIN-SUFFIX` 规则，无 `GEOSITE`）→ `PROXY`
 - 其余流量 → `DIRECT`
 
-内置 preset 按功能拆分在 [`presets/`](presets/) 目录：
+内置 preset 按功能拆分在 `[presets/](presets/)` 目录：
 
-| preset | 说明 |
-|--------|------|
-| `google` | Google、Gmail、YouTube |
-| `github` | GitHub 及 raw 内容 |
-| `android` | Android 开发与构建 |
-| `ai` | OpenAI、Claude 等 |
-| `social` | 社交媒体 |
-| `devtools` | 开发工具与包仓库 |
-| `productivity` | 协作与设计工具 |
-| `media` | 新闻与流媒体 |
 
-未指定 `--preset` 时，默认使用全部内置 preset。自定义 preset 可放到 `~/.config/vless-clash-dev/presets/`，或通过 `--custom-preset` 指定文件。格式见 [`presets/README.md`](presets/README.md)。
+| preset         | 说明                   |
+| -------------- | -------------------- |
+| `google`       | Google、Gmail、YouTube |
+| `github`       | GitHub 及 raw 内容      |
+| `android`      | Android 开发与构建        |
+| `ai`           | OpenAI、Claude 等      |
+| `social`       | 社交媒体                 |
+| `devtools`     | 开发工具与包仓库             |
+| `productivity` | 协作与设计工具              |
+| `media`        | 新闻与流媒体               |
+
+
+未指定 `--preset` 时，默认使用全部内置 preset。自定义 preset 可放到 `~/.config/vless-clash-dev/presets/`，或通过 `--custom-preset` 指定文件。格式见 `[presets/README.md](presets/README.md)`。
 
 ## 开发与测试
 
