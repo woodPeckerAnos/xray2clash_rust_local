@@ -18,7 +18,7 @@ enum OutputMode {
 
 #[derive(Parser, Debug)]
 #[command(
-    name = "vless-clash-dev",
+    name = "xray2clash",
     about = "Convert VLESS + REALITY share links to Clash Verge Dev YAML configs"
 )]
 struct Cli {
@@ -318,7 +318,7 @@ mod tests {
     #[test]
     fn output_basename_prefers_output_name() {
         let cli = Cli::try_parse_from([
-            "vless-clash-dev",
+            "xray2clash",
             "--input",
             "vless://uuid@example.com:443?security=reality&sni=www.example.com&pbk=KEY#Node",
             "--name",
@@ -339,7 +339,7 @@ mod tests {
     #[test]
     fn rename_alias_maps_to_name() {
         let cli = Cli::try_parse_from([
-            "vless-clash-dev",
+            "xray2clash",
             "--input",
             "vless://uuid@example.com:443?security=reality&sni=www.example.com&pbk=KEY",
             "--rename",
@@ -353,7 +353,7 @@ mod tests {
     #[test]
     fn whitelist_defaults_to_all_presets() {
         let cli = Cli::try_parse_from([
-            "vless-clash-dev",
+            "xray2clash",
             "--input",
             "vless://uuid@example.com:443?security=reality&sni=www.example.com&pbk=KEY",
             "--mode",

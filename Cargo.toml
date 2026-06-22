@@ -5,6 +5,14 @@ edition = "2021"
 description = "Convert VLESS + REALITY share links to Clash Verge Dev (Mihomo) YAML configs"
 license = "MIT"
 
+[lib]
+name = "vless_clash_dev"
+path = "src/lib.rs"
+
+[[bin]]
+name = "xray2clash"
+path = "src/main.rs"
+
 [dependencies]
 anyhow = "1"
 clap = { version = "4", features = ["derive"] }

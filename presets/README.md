@@ -17,7 +17,7 @@
 
 ## 自定义 preset
 
-在 `~/.config/vless-clash-dev/presets/` 下新建 YAML 文件，或通过 `--custom-preset` 指定路径：
+在 `~/.config/xray2clash/presets/` 下新建 YAML 文件，或通过 `--custom-preset` 指定路径：
 
 ```yaml
 name: my-sites
@@ -31,10 +31,10 @@ domains:
 
 ```bash
 # 按名称加载自定义 preset（需在配置目录中）
-vless-clash-dev --input "vless://..." --mode whitelist --preset my-sites
+xray2clash --input "vless://..." --mode whitelist --preset my-sites
 
 # 直接指定文件路径
-vless-clash-dev --input "vless://..." --mode whitelist --custom-preset ./my-sites.yaml
+xray2clash --input "vless://..." --mode whitelist --custom-preset ./my-sites.yaml
 ```
 
 规则说明：

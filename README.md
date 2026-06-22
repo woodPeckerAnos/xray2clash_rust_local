@@ -1,7 +1,5 @@
 # **[xray2clash_rust_local](https://github.com/woodPeckerAnos/xray2clash_rust_local)**
 
-
-
 将 xray 安装脚本生成的 **VLESS + REALITY** 分享链接（`vless://`）转换为 [Clash Verge Dev](https://github.com/clash-verge-rev/clash-verge-rev) 可直接导入的 Mihomo YAML 配置。
 
 本地离线运行，无需第三方在线转换。
@@ -13,11 +11,11 @@
 ## 安装
 
 ```bash
-cd ~/Projects/vless-clash-dev
+cd ~/Projects/xray2clash
 cargo build --release
 ```
 
-编译产物：`target/release/vless-clash-dev`
+编译产物：`target/release/xray2clash`
 
 全局安装（可选）：
 
@@ -30,7 +28,7 @@ cargo install --path .
 ### 单条链接 → YAML 文件
 
 ```bash
-vless-clash-dev \
+xray2clash \
   --input "vless://UUID@server:443?type=tcp&security=reality&sni=www.example.com&fp=chrome&pbk=PUBLIC_KEY&sid=SHORT_ID&flow=xtls-rprx-vision#NodeName" \
   --output ./outputs/my-node.yaml \
   --mode rule
@@ -39,7 +37,7 @@ vless-clash-dev \
 ### 批量转换（每行一个链接）
 
 ```bash
-vless-clash-dev \
+xray2clash \
   --input-file ./links.txt \
   --output-dir ./outputs \
   --mode both
@@ -50,13 +48,13 @@ vless-clash-dev \
 默认加载全部内置 preset：
 
 ```bash
-vless-clash-dev --input "vless://..." --output ./outputs/my-node-whitelist.yaml --mode whitelist
+xray2clash --input "vless://..." --output ./outputs/my-node-whitelist.yaml --mode whitelist
 ```
 
 按需组合 preset：
 
 ```bash
-vless-clash-dev --input "vless://..." --mode whitelist \
+xray2clash --input "vless://..." --mode whitelist \
   --preset github --preset android --preset ai \
   --output ./outputs/dev-whitelist.yaml
 ```
@@ -64,23 +62,23 @@ vless-clash-dev --input "vless://..." --mode whitelist \
 查看可用 preset：
 
 ```bash
-vless-clash-dev --list-presets
+xray2clash --list-presets
 ```
 
 ### 重命名节点与输出文件
 
 ```bash
 # 重命名 Clash 中的节点名
-vless-clash-dev --input "vless://..." --rename "我的节点" --mode rule --stdout
+xray2clash --input "vless://..." --rename "我的节点" --mode rule --stdout
 
 # 重命名输出文件名（节点名仍取自链接 fragment）
-vless-clash-dev --input "vless://..." --mode whitelist \
+xray2clash --input "vless://..." --mode whitelist \
   --output-name "home-whitelist" \
   --output-dir ./outputs
 # → ./outputs/home-whitelist.yaml
 
 # 同时指定节点名和文件名
-vless-clash-dev --input "vless://..." --name "US-Node" \
+xray2clash --input "vless://..." --name "US-Node" \
   --output-name "us-proxy" --mode both --output-dir ./outputs
 # → ./outputs/us-proxy-global.yaml
 # → ./outputs/us-proxy-rule.yaml
@@ -90,26 +88,26 @@ vless-clash-dev --input "vless://..." --name "US-Node" \
 ### 输出到 stdout
 
 ```bash
-vless-clash-dev --input "vless://..." --stdout --mode rule
+xray2clash --input "vless://..." --stdout --mode rule
 ```
 
 ## CLI 参数
 
 
-| 参数                                  | 说明                                |
-| ----------------------------------- | --------------------------------- |
-| `--input`                           | 单条 `vless://` 链接                  |
-| `--input-file`                      | 文本文件，每行一条链接（`#` 开头为注释）            |
-| `--output`                          | 输出 YAML 文件路径（仅单条输入）               |
-| `--output-dir`                      | 输出目录（默认 `./outputs`）              |
-| `--stdout`                          | 写入标准输出                            |
-| `--mode global|rule|whitelist|both` | 生成全局、分流、白名单或全部三种配置（默认 `rule`）     |
-| `--preset <name>`                   | 白名单 preset 名称，可重复指定               |
-| `--preset-all`                      | 使用全部内置 preset                     |
-| `--custom-preset <file>`            | 额外加载自定义 preset YAML，可重复指定         |
-| `--list-presets`                    | 列出内置与用户 preset                    |
-| `--name`, `--rename`                | 重命名 Clash 中的代理节点                  |
-| `--output-name`                     | 重命名输出文件名（不含扩展名，配合 `--output-dir`） |
+| 参数                       | 说明                                |
+| ------------------------ | --------------------------------- |
+| `--input`                | 单条 `vless://` 链接                  |
+| `--input-file`           | 文本文件，每行一条链接（`#` 开头为注释）            |
+| `--output`               | 输出 YAML 文件路径（仅单条输入）               |
+| `--output-dir`           | 输出目录（默认 `./outputs`）              |
+| `--stdout`               | 写入标准输出                            |
+| `--mode global           | rule                              |
+| `--preset <name>`        | 白名单 preset 名称，可重复指定               |
+| `--preset-all`           | 使用全部内置 preset                     |
+| `--custom-preset <file>` | 额外加载自定义 preset YAML，可重复指定         |
+| `--list-presets`         | 列出内置与用户 preset                    |
+| `--name`, `--rename`     | 重命名 Clash 中的代理节点                  |
+| `--output-name`          | 重命名输出文件名（不含扩展名，配合 `--output-dir`） |
 
 
 ## 分享链接格式
@@ -172,7 +170,7 @@ vless://UUID@server:443?type=tcp&security=reality&sni=www.example.com&fp=chrome&
 | `media`        | 新闻与流媒体               |
 
 
-未指定 `--preset` 时，默认使用全部内置 preset。自定义 preset 可放到 `~/.config/vless-clash-dev/presets/`，或通过 `--custom-preset` 指定文件。格式见 `[presets/README.md](presets/README.md)`。
+未指定 `--preset` 时，默认使用全部内置 preset。自定义 preset 可放到 `~/.config/xray2clash/presets/`，或通过 `--custom-preset` 指定文件。格式见 `[presets/README.md](presets/README.md)`。
 
 ## 开发与测试
 

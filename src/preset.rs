@@ -89,7 +89,7 @@ pub fn bundled_preset_names() -> Vec<&'static str> {
 }
 
 pub fn user_preset_dir() -> PathBuf {
-    dirs_config_home().join("vless-clash-dev").join("presets")
+    dirs_config_home().join("xray2clash").join("presets")
 }
 
 pub fn list_available_presets() -> Result<Vec<PresetSummary>> {
