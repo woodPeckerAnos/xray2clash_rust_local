@@ -1,0 +1,14 @@
+name: devtools
+description: Developer tools and package registries
+domains:
+  - stackoverflow.com
+  - stackexchange.com
+  - npmjs.org
+  - npmjs.com
+  - pypi.org
+  - pythonhosted.org
+  - docker.com
+  - docker.io
+  - vercel.com
+  - cloudflare.com
+  - gitlab.com

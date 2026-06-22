@@ -1,0 +1,24 @@
+name: android
+description: Android SDK, Gradle, Maven and Play development services
+domains:
+  - android.com
+  - developer.android.com
+  - source.android.com
+  - googlesource.com
+  - dl.google.com
+  - maven.google.com
+  - play.google.com
+  - firebase.google.com
+  - firebaseio.com
+  - crashlytics.com
+  - issuetracker.google.com
+  - gradle.org
+  - services.gradle.org
+  - plugins.gradle.org
+  - jitpack.io
+  - kotlinlang.org
+  - jetbrains.com
+  - maven.apache.org
+  - repo.maven.apache.org
+  - sonatype.org
+  - oss.sonatype.org

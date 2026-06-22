@@ -1,0 +1,18 @@
+[package]
+name = "xray2clash_rust_local"
+version = "0.1.0"
+edition = "2021"
+description = "Convert VLESS + REALITY share links to Clash Verge Dev (Mihomo) YAML configs"
+license = "MIT"
+
+[dependencies]
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+percent-encoding = "2"
+serde = { version = "1", features = ["derive"] }
+serde_yaml = "0.9"
+thiserror = "2"
+url = "2"
+
+[dev-dependencies]
+tempfile = "3"

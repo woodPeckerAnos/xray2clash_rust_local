@@ -1,0 +1,7 @@
+name: github
+description: GitHub repositories, raw content and pages
+domains:
+  - github.com
+  - githubusercontent.com
+  - githubassets.com
+  - github.io

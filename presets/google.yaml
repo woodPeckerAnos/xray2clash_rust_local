@@ -1,0 +1,13 @@
+name: google
+description: Google search, Gmail, YouTube and core APIs
+domains:
+  - google.com
+  - googleapis.com
+  - gstatic.com
+  - googlevideo.com
+  - googleusercontent.com
+  - ggpht.com
+  - gmail.com
+  - youtube.com
+  - ytimg.com
+  - bing.com
